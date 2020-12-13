@@ -1,5 +1,5 @@
-.terraform
-.terragrunt
-*.tfstate
-*.tfstate.backup
-.plugins
+./PBL/.terraform
+./PBL/*.tfstate
+./PBL/*.tfstate.backup
+./PBL/.plugins
+

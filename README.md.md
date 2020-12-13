@@ -2,7 +2,7 @@
 
 Here we can built Infrastructures using Terraform. 
 
-![](../images/AWS-Tooling-Website.png)
+![](./Images/AWS-Tooling-Website.png)
 
 ### Lets Get Started
 
@@ -27,6 +27,8 @@ We will begin the project by fulfilling the below pre-requisites
 * Create a an IAM user, name it `terraform` (*ensure that the user only has programatic access to the AWS account*) and assign the IAM role created above.
 * Copy the secrete access key and access key ID. Save them in a notepad temporarily.
 * Configure the terminal on your laptop to connect to AWS using the access keys copied above. If you are on Windows, use `gitbash`, if you are on a Mac, you can simply open up the `terminal`. Read [here](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html) to configure the terminal properly. 
+* For Windows, had to downloadAWS CLI Read [here](https://aws.amazon.com/cli/)
+* once completed configure aws uisng `aws configure`on command prompt
 * Create an S3 bucket to store Terraform state file. You can name it something like `dev-terraform-bucket` (*Note: S3 buckets are unique within the region, so the name must be completely unique*)
 
 
@@ -305,7 +307,7 @@ Since `data.aws_availability_zones.available.names` returns a list like `["us-ea
 
 Opening up `terraform console` gives the following
 
-![](../images/length-function.png)
+![](./Images/length-function.png)
 
 We can simply update the public subnet block like this 
 
@@ -531,17 +533,25 @@ preferred_number_of_public_subnets = 2
 ```
 After we done with all configuration below image shows the output after runnning `terraform apply`
 and we notice  total 3 resources created which includes 1 vpc and two public subnets
-![](../images/terraform-apply-output.png)
+![](./Images/terraform-apply-outputs.png)
 
 
 ### The issue I have faced and most important concepts to learn
-* I encountered several syntax error while manually typing code. Thats ok we can gain hands on experince and will be good practice to write code. I miss spelled while declaring resources like`availability_zones`
+* I encountered several syntax error while manually typing code. Thats ok, making hands dirty  will be good practice to write code. I miss spelled while declaring resources like`availability_zones`
 * Terraform documention is recommended to go back and forth for resource you want to create. 
 * The most ant concept is to make our more re-usable and dynamic.
 * Making `cidr_block` dynamic with the help function `cidrsubnet()`, and use of `count` and the   concepts of variable decelarations are important points to remember in this project.
+* Finally when pushing changes to github repository I had received error message `"remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: error: Trace: 6d313b1dce003c071020d495fbf7592c1db12beb3889b2e22b2050ed56044e6c
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File pbl/.terraform/plugins/registry.terraform.io/hashicorp/aws/3.20.0/windows_amd64/terraform-provider-aws_v3.20.0_x5.exe is 165.05 MB; this exceeds GitHub'
+s file size limit of 100.00 MB
+To https://github.com/sidahal2018/Terraform-01.git
+ ! [remote rejected] project16 -> project16 (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/sidahal2018/Terraform-01.git'`
+Finally, had add `.terraform` in the `.gitignore` file
 
 
-### We will continue in the next project.
   
   
 
