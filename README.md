@@ -54,8 +54,6 @@ As you go along completing this project, you will get familiar with terminologie
 - Locals
 - Backend  
 
-Watch out for them and have solid understanding of these terms. 
-
 #### Best practice
 
 * Ensure that every resource is tagged using multiple key-value pairs. (you will see this in action as we go along)
@@ -82,7 +80,7 @@ provider "aws" {
 }
 
 # Create VPC
-resource "aws_vpc" "main" {
+  resource "aws_vpc" "main" {
   cidr_block                     = "10.0.0.0/16"
   enable_dns_support             = "true"
   enable_dns_hostnames           = "true"
@@ -424,7 +422,7 @@ and we notice 3 subnets gets created.
 
 ## Introducing variables.tf & terraform.tfvars
 
-Rather than having a long main.tf vars, we can actually make our work a lot more readable by separating some parts of the configuration content.W
+Rather than having a long main.tf vars, we can actually make our work a lot more readable by separating some parts of the configuration content.
  
 
 ## variables precedence
@@ -533,7 +531,7 @@ preferred_number_of_public_subnets = 2
 ```
 After we done with all configuration below image shows the output after runnning `terraform apply`
 and we notice  total 3 resources created which includes 1 vpc and two public subnets
-![](./Images/terraform-apply-outputs.png)
+![](./Images/terraform-apply-outputs.PNG)
 
 
 ### The issue I have faced and most important concepts to learn
@@ -549,7 +547,7 @@ s file size limit of 100.00 MB
 To https://github.com/sidahal2018/Terraform-01.git
  ! [remote rejected] project16 -> project16 (pre-receive hook declined)
 error: failed to push some refs to 'https://github.com/sidahal2018/Terraform-01.git'`
-Finally, had add `.terraform` in the `.gitignore` file
+* Finally, had add `.terraform` in the `.gitignore` file
 
 
   
