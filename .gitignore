@@ -1,3 +1,5 @@
-server-script.zip
-/zipped
-/tf-latest
+.terraform
+.terragrunt
+*.tfstate
+*.tfstate.backup
+.plugins
