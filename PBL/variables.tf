@@ -23,3 +23,7 @@ variable "preferred_number_of_public_subnets" {
     default = null
   
 }
+
+variable "my_key_pair_name" {
+ default =  "siki"
+}
