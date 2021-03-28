@@ -2,7 +2,7 @@
 <p>In the previous Part we were able to to provision a VPC with public subnet </p>
 
 <p>In this Part we are going to finalize all of the infrastructure</p>
-![](./Images/AWS-Tooling-Website.png)
+![](./Images/AWS-Tooling-Website.PNG)
 ---
 ## Create Private Subnets
 
@@ -1144,4 +1144,4 @@ resource "aws_db_instance" "default" {
     2.  Sonarqube
     3.  Artifactory
 
-19. Using the same Ansible from project 14 - Deploy all the components into the infrastructure and test that all is working just the same as project 1
+

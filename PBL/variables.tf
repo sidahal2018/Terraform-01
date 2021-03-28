@@ -23,6 +23,13 @@ variable "preferred_number_of_public_subnets" {
     default = null
   
 }
+variable "preferred_number_of_private_subnets_1" {
+      default = null
+}
+
+variable "environment" {
+      default = null
+}
 
 variable "my_key_pair_name" {
  default =  "siki"
