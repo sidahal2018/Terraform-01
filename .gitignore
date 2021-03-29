@@ -1,4 +1,4 @@
-./PBL/.terraform
+./PBL/.terraform/terraform.tfstate
 ./PBL/*.tfstate
 ./PBL/*.tfstate.backup
 ./PBL/.plugins
