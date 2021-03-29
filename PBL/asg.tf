@@ -1,3 +1,23 @@
+resource "aws_launch_configuration" "my-test-launch-config" {
+  image_id        = var.ami
+  instance_type   = "t2.micro"
+  security_groups = [aws_security_group.my-asg-sg.id]
+
+  user_data = <<-EOF
+              #!/bin/bash
+              yum -y install httpd
+              echo "Hello, from Terraform" > /var/www/html/index.html
+              service httpd start
+              chkconfig httpd on
+              EOF
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+
+resource "aws_autoscaling_group" "public_asg" {
   launch_configuration = aws_launch_configuration.my-test-launch-config.name
   vpc_zone_identifier  = [
     aws_subnet.public[0].id,

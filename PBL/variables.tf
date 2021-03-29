@@ -34,3 +34,40 @@ variable "environment" {
 variable "my_key_pair_name" {
  default =  "siki"
 }
+
+variable "ingressrules" {
+  type = list(number)
+  default = [22,80]
+}
+variable "egressrules" {
+  type = list(number)
+  default = [0]
+}
+variable "cidr_route-table" {
+  default= "0.0.0.0/0"
+}
+variable "cidr_all_traffic" {
+  default= ["0.0.0.0/0"]
+}
+variable "allow_myip" {
+  default= ["71.173.193.5/32"]
+}
+variable "egress_cidr_blocks" {
+  default = ["0.0.0.0/0"]
+}
+variable "ingress_rules_lb"{
+default =  [{
+      from_port  = 80
+     to_port     = 80
+     protocol    = "tcp"
+     description = "Port 80"
+	}]
+}
+variable "ingress_rules_bastion"{
+default =  [{
+     from_port  = 22
+     to_port    = 22
+     protocol   = "tcp"
+     description = "Port 22"
+	}]
+}

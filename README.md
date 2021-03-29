@@ -1,8 +1,11 @@
 # Automate Infrastructure With IAC using Terraform Part 2
 <p>In the previous Part we were able to to provision a VPC with public subnet </p>
 
-<p>In this Part we are going to finalize all of the infrastructure</p>
-![](./Images/AWS-Tooling-Website.PNG)
+<p>In this Part we are going to finalize all of the infrastructure based on the below architectural digram</p>
+
+![](./Images/AWS-Tooling-Website.png)
+
+
 ---
 ## Create Private Subnets
 
@@ -67,7 +70,7 @@ variable "environment" {
       default = null
 }
 ```
-`terraform.tfvars`: `environment = "test"`
+terraform.tfvars: environment = "test"
 ---
 **Note:** Add the same tags to all resources which we created now and will create later but take care there are some resources don't accpet tags  
 
@@ -122,13 +125,11 @@ Now lets do `terraform plan`.
 
 we will find that it is going to change the current vpc and public subnet to add to them tags and will add the new private subnet with tags 
 
-![alt text](images/tags.png)
-
 and if we did `terraform apply` 
 
 we will find that aws updated with new subnets
 
-![alt text](images/subnets.png)
+
 ---
 ## Introducing `format` Function 
 `format` produces a string by formatting a number of other values according to a specification string. It is similar to the printf function in C, and other similar functions in other programming languages.
@@ -141,33 +142,8 @@ tags = {
     Environment = var.environment
   }
   ```
-now if you did a `terraform apply` again you will find that tag will be changed as the following: 
 
-```
-Terraform will perform the following actions:
-  ~ update in-place
 
-  # aws_subnet.private[0] will be updated in-place
-  ~ resource "aws_subnet" "private" {
-        id                              = "subnet-0926bfdb8329b35e5"
-      ~ tags                            = {
-          ~ "Name"        = "PrivateSubnet" -> "PrivateSubnet-0"
-            # (1 unchanged element hidden)
-        }
-        # (8 unchanged attributes hidden)
-    }
-
-  # aws_subnet.private[1] will be updated in-place
-  ~ resource "aws_subnet" "private" {
-        id                              = "subnet-0f9d7e55b639f0281"
-      ~ tags                            = {
-          ~ "Name"        = "PrivateSubnet" -> "PrivateSubnet-1"
-            # (1 unchanged element hidden)
-        }
-        # (8 unchanged attributes hidden)
-    }
-
-```
 ## Replicate What did we do for the other private subnet 
 - make sure to update `variables.tf` file and `terraform.tfvars` file and then add the following code to `main.tf`
 ```
@@ -371,14 +347,10 @@ terraform {
 
     Before doing anything if you opened aws now to see what heppened you shoud be able to see the following:
     - tfstatefile is now inside the S3 bucket 
-    ![alt text](images/tfstat_s3.png)
     - dynamodb table which we create has an entry includes state file status 
-    ![alt text](images/tfstat_beforelock.png)
     - run now `terraform plan` and quickly go and watch what happened to dynamodb table 
       and how it is locked 
-      ![alt text](images/tfstat_locked.png)
     - wait until `terraform plan` is finished and refresh dynamo db table, you be able to see that is back to their state 
-      ![alt text](images/tfstat_afterfinishingplan.png)
 
 
 ### conclusion
@@ -397,7 +369,6 @@ output "dynamodb_table_name" {
 and then do `terraform apply`
 
 Now, head over to the S3 console again, refresh the page, and click the gray “Show” button next to “Versions.” You should now see several versions of your terraform.tfstate file in the S3 bucket:
- ![alt text](images/tfstate_vesrsions.png)
 
 ---
 
@@ -1122,10 +1093,10 @@ resource "aws_db_instance" "default" {
 ```
 
 5.  Create an AMI from the Console 
-    1. Select the EC2 Instance to create an AMI ![](../images/Project17/Create-Ec2-AMI.png)
-    2. Navigate to the AMi menu ![](../images/Project17/Navigate-To-AMI-Menu.png)
-    3. Name the AMI ![](../images/Project17/Name-the-AMI.png)
-    4. Copy the AMI ID ![](../images/Project17/Copy-AMI-ID.png)
+    1. Select the EC2 Instance to create an AMI 
+    2. Navigate to the AMi menu
+    3. Name the AMI 
+    4. Copy the AMI ID 
 11. Create launch template for bastion host - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
     1.  Introduce userdata 
 12. NLB and public facing ALB
