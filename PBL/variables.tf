@@ -71,3 +71,21 @@ default =  [{
      description = "Port 22"
 	}]
 }
+variable "bastion_sg_name" {
+  default = "Bastion-SG"
+}
+variable "lb_sg_name" {
+  default = "LB-SG"
+}
+variable "webserver_sg_name" {
+  default = "Webserver-SG"
+}
+variable "DB_sg_name" {
+  default = "DB-SG"
+}
+variable "Bastion_name" {
+  default = "Bastion-Host"
+}
+variable "Elastic_name" {
+  default = "EIP"
+}

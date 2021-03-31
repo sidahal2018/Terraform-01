@@ -1,7 +1,7 @@
 terraform {
     backend "s3" {
-        key = "terraform/tfstate.tfstate"
-        bucket = "siki-remote-backend-2020"
+        key = "tfstate.tfstate"
+        bucket = "tooling-2021"
         region = "us-east-2"
     }
 }
