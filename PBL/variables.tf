@@ -89,3 +89,6 @@ variable "Bastion_name" {
 variable "Elastic_name" {
   default = "EIP"
 }
+variable "account_no" {
+  default = null
+}

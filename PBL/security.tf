@@ -38,10 +38,7 @@ resource "aws_iam_policy" "policy" {
     ]
     }
     EOF
-    tags = {
-        Name = "aws assume policy"
-        Environment = var.environment
-    }
+    
 }
 # Attach the policy to the role
 resource "aws_iam_role_policy_attachment" "test-attach" {
